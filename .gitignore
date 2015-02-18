@@ -1,0 +1,8 @@
+.DS_Store
+.tmp
+.idea
+node_modules
+data
+www
+.DS_Store
+app/bower_components

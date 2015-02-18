@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title gamify
+    meta(charset='UTF-8')
+    meta(content='', name='description')
+    meta(content='', name='author')
+    meta(content='3 days', name='revisit-after')
+
+    // build:css /styles/main.css
+    link(href='/styles/main.css', rel='stylesheet')
+    // endbuild
+
+    body
+      header
+        nav
+
+      block content
+
+      footer
+        | &copy; gamify
+
+      // build:js /scripts/main.js
+      script(src='/bower_components/jquery/jquery.js')
+      script(src='/bower_components/hoodie/dist/hoodie.js')
+      script(src='/scripts/main.js')
+      // endbuild
