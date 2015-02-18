@@ -1,6 +1,6 @@
 # gamify
 
-What the hoodie?
+ learning to build videogames by playing, that's all!
 
 ## Install
 
@@ -9,6 +9,7 @@ To use this project:
 ```bash
 git clone
 npm install
+bower install
 ```
 
 ### Development
