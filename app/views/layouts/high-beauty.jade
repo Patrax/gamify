@@ -1,4 +1,27 @@
 
-	//
-   Created by geoom on 2/24/15.
+// User dashboard, elegant and precise
+// it has a static and horizontal menu top, a navigation on left and boxed content
 
+doctype html
+html
+    head
+        title gamify
+        meta(charset='UTF-8')
+        meta(content='', name='description')
+        meta(content='', name='author')
+        meta(content='3 days', name='revisit-after')
+        // build:css /styles/main.css
+        link(href='/styles/main.css', rel='stylesheet')
+        // endbuild
+    body
+        header
+            nav
+        block content
+        footer
+            | &copy; gamify
+        // Scripts
+        script(src='/vendor/jquery/dist/jquery.min.js')
+        script(src='/vendor/hoodie/src/hoodie.js')
+        script(src='/scripts/main.js')
+        script(src='//localhost:35729/livereload.js')
+        // Script

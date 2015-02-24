@@ -46,7 +46,7 @@ module.exports = function (grunt) {
         ]
       },
       jade: {
-        files: '<%= folders.app %>/jade/**/*.jade',
+        files: '<%= folders.app %>/views/**/*.jade',
         tasks: ['jade']
       }
     },
@@ -135,7 +135,7 @@ module.exports = function (grunt) {
       html: {
         files: [{
           expand: true,
-          cwd: '<%= folders.app %>/jade',
+          cwd: '<%= folders.app %>/views',
           src: ['{,*/}*.jade', '!**/_*'],
           dest: '.tmp/',
           ext: '.html'
@@ -143,7 +143,7 @@ module.exports = function (grunt) {
         options: {
           client: false,
           pretty: true,
-          basedir: '<%= folders.app %>/jade',
+          basedir: '<%= folders.app %>/views',
           data: function(dest, src) {
 
             var page = src[0].replace(/app\/jade\/(.*)\/index.jade/, '$1');
@@ -256,7 +256,7 @@ module.exports = function (grunt) {
           cwd: '<%= folders.app %>',
           dest: '<%= folders.tmp %>',
           src: [
-            'scripts/{,*/}*js', 'bower_components/**/*js'
+            'scripts/{,*/}*js', 'vendor/**/*js'
           ]
         }]
       },
@@ -267,16 +267,6 @@ module.exports = function (grunt) {
           dest: '<%= folders.tmp %>',
           src: [
             'styles/{,*/}*css'
-          ]
-        }]
-      },
-      assets: {
-        files: [{
-          expand: true,
-          cwd: '<%= folders.app %>',
-          dest: '<%= folders.www %>',
-          src: [
-            'assets/{,*/}*.*'
           ]
         }]
       }

@@ -1,2 +1,1 @@
-
-
+var hoodie = window.hoodie || {};
