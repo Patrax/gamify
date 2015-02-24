@@ -1,1 +1,2 @@
-var hoodie = new Hoodie();
+
+

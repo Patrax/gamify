@@ -18,10 +18,12 @@ html
       block content
 
       footer
-        | &copy; gamify
+        |  &copy; gamify
 
-      // build:js /scripts/main.js
-      script(src='/bower_components/jquery/jquery.js')
-      script(src='/bower_components/hoodie/dist/hoodie.js')
+      // Scripts
+      script(src='/bower_components/jquery/dist/jquery.min.js')
       script(src='/scripts/main.js')
-      // endbuild
+      script(src='/_api/_files/hoodie.js')
+      script(src='//localhost:35729/livereload.js')
+      // Script
+
