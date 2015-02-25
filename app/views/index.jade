@@ -3,21 +3,5 @@
 extends /layouts/exhibition
 
 block content
-    article
-        header
-            h1 welcome gamify
-
-        section
-            h2 This is your gamify landing
-
-            p
-                | The views are handled by
-                a(href='http://views-lang.com/') jade
-                | and are located under app/views/. All .jade files with an _underscore are treated as partials and not rendered directly. Everything else is a jade file that is supposed to be a page.
-            p
-                | Styling is handled by
-                a(href='http://learnboost.github.io/stylus/') stylus
-                | and can be found in app/styles/.
-            p
-                | Scripts are plain javascript and located in app/scripts/.
+    div(ng-view, class="container-fluid")
 
