@@ -1,4 +1,4 @@
-// Generated on2015-02-18 using generator-hoodie 0.2.0
+// Generated on2015-02-26 using generator-hoodie 0.2.0
 'use strict';
 
 // # Globbing
@@ -8,336 +8,369 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
-  // load all grunt tasks
-  require('load-grunt-tasks')(grunt);
+    // load all grunt tasks
+    require('load-grunt-tasks')(grunt);
 
-  // Time how long tasks take. Can help when optimizing build times
-  require('time-grunt')(grunt);
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
 
-  grunt.initConfig({
-    folders: {
-      app: 'app',
-      www: 'www',
-      tmp: '.tmp'
-    },
-    hoodie: {
-      start: {
-        options: {
-          callback: function(config) {
-            grunt.config.set('connect.proxies.0.port', config.stack.www.port);
-          }
-        }
-      }
-    },
-    watch: {
-      stylus: {
-        files: '<%= folders.app %>/styles/**/*.styl',
-        tasks: ['stylus']
-      },
-      server: {
-        options: {
-          livereload: true
+    grunt.initConfig({
+        folders: {
+            app: 'app',
+            www: 'www',
+            tmp: '.tmp'
         },
-        files: [
-          '<%= folders.tmp %>/*.html',
-          '<%= folders.tmp %>/styles/{,*/}*.css',
-          '{.tmp,<%= folders.app %>}/scripts/{,*/}*.js',
-          '<%= folders.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
-      },
-      jade: {
-        files: '<%= folders.app %>/views/**/*.jade',
-        tasks: ['jade']
-      }
-    },
-    connect: {
-      options: {
-        port: 9000,
-        // change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
-      },
-      proxies: [
-        {
-          context: '/_api',
-          host: 'localhost',
-          port: false,
-          https: false,
-          changeOrigin: false
-        }
-      ],
-      server: {
-        options: {
-          open: true,
-          base: [
-            '<%= folders.tmp %>',
-            '<%= folders.app %>'
-          ]
-        }
-      },
-      test: {
-        options: {
-          base: [
-            '<%= folders.tmp %>',
-            'test',
-            '<%= folders.app %>'
-          ]
-        }
-      },
-      www: {
-        options: {
-          open: true,
-          base: [
-            '<%= folders.www %>'
-          ],
-          livereload: false
-        }
-      }
-    },
-    clean: {
-      www: {
-        files: [{
-          dot: true,
-          src: [
-            '<%= folders.tmp %>',
-            '<%= folders.www %>/*',
-            '!<%= folders.www %>/.git*'
-          ]
-        }]
-      },
-      server: '<%= folders.tmp %>'
-    },
-    mocha: {
-      all: {
-        options: {
-          run: true,
-          urls: ['http://localhost:<%= connect.options.port %>/index.html']
-        }
-      }
-    },
-    stylus: {
-      compile: {
-        files: [{
-          expand: true,
-          cwd: '<%= folders.app %>/styles',
-          src: ['{,*/}*.styl', '!**/_*'],
-          dest: '<%= folders.tmp %>/styles',
-          ext: '.css'
-        }],
-        options: {
-          compress: false,
-          // convert the css url() declaration into nib inline imaging function
-          // this converts images smaller than 30kb to data url
-          urlfunc: 'url'
-        }
-      }
-    },
-    jade: {
-      html: {
-        files: [{
-          expand: true,
-          cwd: '<%= folders.app %>/views',
-          src: ['{,*/}*.jade', '!**/_*'],
-          dest: '.tmp/',
-          ext: '.html'
-        }],
-        options: {
-          client: false,
-          pretty: true,
-          basedir: '<%= folders.app %>/views',
-          data: function(dest, src) {
-
-            var page = src[0].replace(/app\/jade\/(.*)\/index.jade/, '$1');
-
-            if (page == src[0]) {
-              page = 'index';
+        hoodie: {
+            start: {
+                options: {
+                    callback: function(config) {
+                        grunt.config.set('connect.proxies.0.port', config.stack.www.port);
+                    }
+                }
             }
-
-            return {
-              page: page
-            };
-          }
-        }
-      }
-    },
-    rev: {
-      www: {
-        files: {
-          src: [
-            '<%= folders.www %>/scripts/{,*/}*.js',
-            '<%= folders.www %>/styles/{,*/}*.css',
-            '<%= folders.www %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-            '<%= folders.www %>/styles/fonts/*'
-          ]
-        }
-      }
-    },
-    useminPrepare: {
-      html: '<%= folders.tmp %>/index.html',
-      options: {
-        dest: '<%= folders.www %>'
-      }
-    },
-    usemin: {
-      html: ['<%= folders.www %>/{,*/}*.html'],
-      css: ['<%= folders.www %>/styles/{,*/}*.css'],
-      options: {
-        dirs: ['<%= folders.www %>']
-      }
-    },
-    imagemin: {
-      www: {
-        files: [{
-          expand: true,
-          cwd: '<%= folders.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg}',
-          dest: '<%= folders.www %>/images'
-        }]
-      }
-    },
-    svgmin: {
-      www: {
-        files: [{
-          expand: true,
-          cwd: '<%= folders.app %>/images',
-          src: '{,*/}*.svg',
-          dest: '<%= folders.www %>/images'
-        }]
-      }
-    },
-    cssmin: {
-      www: {
-        files: {
-          '<%= folders.www %>/styles/main.css': [
-            '<%= folders.tmp %>/styles/{,*/}*.css'
-          ]
-        }
-      }
-    },
-    htmlmin: {
-      www: {
-        options: {
-          /*removeCommentsFromCDATA: true,
-          // https://github.com/folders/grunt-usemin/issues/44
-          //collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true*/
         },
-        files: [{
-          expand: true,
-          cwd: '<%= folders.tmp %>',
-          src: '{,*/}*.html',
-          dest: '<%= folders.www %>'
-        }]
-      }
-    },
-    // Put files not handled in other tasks here
-    copy: {
-      www: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= folders.app %>',
-          dest: '<%= folders.www %>',
-          src: [
-            '*.{ico,txt}',
-            '.htaccess',
-            'images/{,*/}*.{webp,gif}',
-            'styles/fonts/*'
-          ]
-        }]
-      },
-      js: {
-        files: [{
-          expand: true,
-          cwd: '<%= folders.app %>',
-          dest: '<%= folders.tmp %>',
-          src: [
-            'scripts/{,*/}*js', 'vendor/**/*js'
-          ]
-        }]
-      },
-      css: {
-        files: [{
-          expand: true,
-          cwd: '<%= folders.app %>',
-          dest: '<%= folders.tmp %>',
-          src: [
-            'styles/{,*/}*css'
-          ]
-        }]
-      }
-    },
-    release: {
-      options: {
-        npm: false
-      }
-    },
-    concurrent: {
-      server: [
-        'stylus'
-      ],
-      test: [
-        'stylus'
-      ],
-      www: [
-        'stylus',
-        'imagemin',
-        'svgmin',
-        'htmlmin'
-      ]
-    },
-    jshint: {
-      options: {
-        reporter: require('jshint-stylish')
-      },
-      build: ['<%= folders.app %>/scripts/**/*js']
-    }
-  });
+        watch: {
+            stylus: {
+                files: '<%= folders.app %>/styles/**/*.styl',
+                tasks: ['stylus']
+            },
+            server: {
+                options: {
+                    livereload: true
+                },
+                files: [
+                    '<%= folders.tmp %>/*.html',
+                    '<%= folders.tmp %>/styles/{,*/}*.css',
+                    '{.tmp,<%= folders.app %>}/scripts/{,*/}*.js',
+                    '<%= folders.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                ]
+            },
+            jade: {
+                files: '<%= folders.app %>/jade/**/*.jade',
+                tasks: ['jade']
+            }
+        },
+        connect: {
+            options: {
+                port: 9000,
+                // change this to '0.0.0.0' to access the server from outside
+                hostname: 'localhost'
+            },
+            proxies: [
+                {
+                    context: '/_api',
+                    host: 'localhost',
+                    port: false,
+                    https: false,
+                    changeOrigin: false
+                }
+            ],
+            server: {
+                options: {
+                    open: true,
+                    base: [
+                        '<%= folders.tmp %>',
+                        '<%= folders.app %>'
+                    ]
+                }
+            },
+            test: {
+                options: {
+                    base: [
+                        '<%= folders.tmp %>',
+                        'test',
+                        '<%= folders.app %>'
+                    ]
+                }
+            },
+            www: {
+                options: {
+                    open: true,
+                    base: [
+                        '<%= folders.www %>'
+                    ],
+                    livereload: false
+                }
+            }
+        },
+        clean: {
+            www: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '<%= folders.tmp %>',
+                        '<%= folders.www %>/*',
+                        '!<%= folders.www %>/.git*'
+                    ]
+                }]
+            },
+            server: '<%= folders.tmp %>'
+        },
+        mocha: {
+            all: {
+                options: {
+                    run: true,
+                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                }
+            }
+        },
+        stylus: {
+            compile: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.app %>/styles',
+                    src: ['{,*/}*.styl', '!**/_*'],
+                    dest: '<%= folders.www %>/styles',
+                    ext: '.css'
+                }],
+                options: {
+                    compress: false,
+                    // convert the css url() declaration into nib inline imaging function
+                    // this converts images smaller than 30kb to data url
+                    urlfunc: 'url'
+                }
+            }
+        },
+        jade: {
+            html: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.app %>/jade',
+                    src: ['{,*/}*.jade', '!**/_*'],
+                    dest: 'www/',
+                    ext: '.html'
+                }],
+                options: {
+                    client: false,
+                    pretty: true,
+                    basedir: '<%= folders.app %>/jade',
+                    data: function(dest, src) {
 
-  grunt.registerTask('server', function(target) {
-    if (target === 'www') {
-      return grunt.task.run(['build', 'connect:www:keepalive']);
-    }
+                        var page = src[0].replace(/app\/jade\/(.*)\/index.jade/, '$1');
 
-    grunt.task.run([
-      'clean:server',
-      'hoodie',
-      'jade',
-      'concurrent:server',
-      'connect:server',
-      'watch'
+                        if (page == src[0]) {
+                            page = 'index';
+                        }
+
+                        return {
+                            page: page
+                        };
+                    }
+                }
+            }
+        },
+        rev: {
+            www: {
+                files: {
+                    src: [
+                        '<%= folders.www %>/scripts/{,*/}*.js',
+                        '<%= folders.www %>/styles/{,*/}*.css',
+                        '<%= folders.www %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                        '<%= folders.www %>/styles/fonts/*'
+                    ]
+                }
+            }
+        },
+        useminPrepare: {
+            html: '<%= folders.tmp %>/index.html',
+            options: {
+                dest: '<%= folders.www %>'
+            }
+        },
+        usemin: {
+            html: ['<%= folders.www %>/{,*/}*.html'],
+            css: ['<%= folders.www %>/styles/{,*/}*.css'],
+            options: {
+                dirs: ['<%= folders.www %>']
+            }
+        },
+        concat: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: ['<%= folders.tmp %>/bower_components/**/*.js', '<%= folders.tmp %>/scripts/**/*.js'],
+                dest: '<%= folders.tmp %>/concat/scripts/main.js'
+            }
+        },
+        uglify: {
+            options: {
+                mangle: {
+                    except: ['jQuery', 'Angular']
+                }
+            },
+            my_target: {
+                files: {
+                    '<%= folders.www %>/scripts/main.js': ['<%= folders.tmp %>/concat/scripts/main.js']
+                }
+            }
+        },
+        imagemin: {
+            www: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.app %>/images',
+                    src: '{,*/}*.{png,jpg,jpeg}',
+                    dest: '<%= folders.www %>/images'
+                }]
+            }
+        },
+        svgmin: {
+            www: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.app %>/images',
+                    src: '{,*/}*.svg',
+                    dest: '<%= folders.www %>/images'
+                }]
+            }
+        },
+        cssmin: {
+            www: {
+                files: {
+                    '<%= folders.www %>/styles/main.css': [
+                        '<%= folders.tmp %>/styles/{,*/}*.css'
+                    ]
+                }
+            }
+        },
+        htmlmin: {
+            www: {
+                options: {
+                    /*removeCommentsFromCDATA: true,
+                     // https://github.com/folders/grunt-usemin/issues/44
+                     //collapseWhitespace: true,
+                     collapseBooleanAttributes: true,
+                     removeAttributeQuotes: true,
+                     removeRedundantAttributes: true,
+                     useShortDoctype: true,
+                     removeEmptyAttributes: true,
+                     removeOptionalTags: true*/
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.tmp %>',
+                    src: '{,*/}*.html',
+                    dest: '<%= folders.www %>'
+                }]
+            }
+        },
+        // Put files not handled in other tasks here
+        copy: {
+            www: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= folders.app %>',
+                    dest: '<%= folders.www %>',
+                    src: [
+                        '*.{ico,txt}',
+                        '.htaccess',
+                        'images/{,*/}*.{webp,gif}',
+                        'styles/fonts/*'
+                    ]
+                }]
+            },
+            js: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.app %>',
+                    dest: '<%= folders.www %>',
+                    src: [
+                        'scripts/**/*.{js,html}', 'vendor/**/*.js'
+                    ]
+                }]
+            },
+            css: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.app %>',
+                    dest: '<%= folders.www %>',
+                    src: [
+                        'styles/**/*.css'
+                    ]
+                }]
+            },
+            assets: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= folders.app %>',
+                    dest: '<%= folders.www %>',
+                    src: [
+                        'assets/**/*.*'
+                    ]
+                }]
+            }
+        },
+        release: {
+            options: {
+                npm: false
+            }
+        },
+        concurrent: {
+            server: [
+                'stylus'
+            ],
+            test: [
+                'stylus'
+            ],
+            www: [
+                'stylus',
+                // 'imagemin',
+                'svgmin',
+                'htmlmin'
+            ]
+        },
+        jshint: {
+            options: {
+                reporter: require('jshint-stylish')
+            },
+            build: ['<%= folders.app %>/scripts/**/*js']
+        }
+    });
+
+    grunt.registerTask('server', function(target) {
+        if (target === 'www') {
+            return grunt.task.run(['build', 'connect:www:keepalive']);
+        }
+
+        grunt.task.run([
+            'clean:server',
+            'hoodie',
+            'jade',
+            'concurrent:server',
+            'connect:server',
+            'watch'
+        ]);
+    });
+
+    grunt.registerTask('test', [
+        'clean:server',
+        'concurrent:test',
+        'connect:test',
+        'mocha'
     ]);
-  });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'connect:test',
-    'mocha'
-  ]);
+    grunt.registerTask('build', [
+        'clean:www',
+        'jade',
+        'copy:js',
+        'stylus:compile',
+        //'copy:css',
+        //'useminPrepare',
+        //'concurrent:www',
+        //'concat',
+        //'cssmin',
+        //'uglify',
+        //'copy:www',
+        'copy:assets',
+        //'rev',
+        //'usemin'
+    ]);
 
-  grunt.registerTask('build', [
-    'clean:www',
-    'jade',
-    'copy:js',
-    'copy:css',
-    'useminPrepare',
-    'concurrent:www',
-    //'concat',
-    'cssmin',
-    //'uglify',
-    'copy:www',
-    'rev',
-    'usemin'
-  ]);
-
-  grunt.registerTask('default', [
-    'jshint',
-    'test',
-    'build'
-  ]);
+    grunt.registerTask('default', [
+        'jshint',
+        'test',
+        'build'
+    ]);
 };
