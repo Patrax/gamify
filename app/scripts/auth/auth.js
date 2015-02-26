@@ -8,5 +8,9 @@ angular.module('auth', ['controllers.auth'])
         .when('/signin', {
             controller:'SigninForm',
             templateUrl:'scripts/auth/templates/signin-form.tpl.html'
+        })
+        .when('/signup', {
+            controller:'SignupForm',
+            templateUrl:'scripts/auth/templates/signup-form.tpl.html'
         });
 }]);

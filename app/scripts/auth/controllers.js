@@ -38,4 +38,13 @@ angular.module('controllers.auth', [])
                     $scope.signForm.$error.message = hoodieError.message;
                 });
         };
+    }])
+
+    .controller('SignupForm', ['$scope', function ($scope) {
+        $scope.actionFn = function (user, pass) {
+            $scope.userAction.signUp(user, pass)
+                .then(undefined, function (hoodieError) {
+                    $scope.signForm.$error.message = hoodieError.message;
+                });
+        };
     }]);

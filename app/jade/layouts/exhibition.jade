@@ -6,6 +6,7 @@ doctype html
 html(lang='en', ng-app='app', ng-controller='Account')
     head
         title gamify landing
+        link(href='/styles/main.css', rel='stylesheet')
     body
         header
             nav
@@ -19,7 +20,7 @@ html(lang='en', ng-app='app', ng-controller='Account')
         script(src='/vendor/angular/angular.min.js')
         script(src='/vendor/angular-route/angular-route.min.js')
 
-        script(src='/vendor/hoodie/src/hoodie.js')
+        script(src='/_api/_files/hoodie.js')
 
         script(src='/scripts/auth/controllers.js')
         script(src='/scripts/auth/auth.js')
