@@ -1,9 +1,16 @@
-.DS_Store
-.tmp
-.idea
-node_modules
-data
-www
-.DS_Store
-app/vendor
-*.log
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore images uploaded
+public/assets/*
+
+/.idea
