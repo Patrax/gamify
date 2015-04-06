@@ -1,3 +1,28 @@
+testing specs for games:
+name: string
+summary: text
+description: text
+
+- name must be present
+- name must be between 5 and 100 characters
+- summary must be present
+- summary must be between 10 and 150 characters
+- description must be present
+- description must be between 20 and 500 characters
+
+testing specs for users:
+name: string
+email: string
+
+- name must be present
+- name must be between 3 and 40 characters
+- email must be present
+- email must be unique (since we'll use it for logins)
+- email must be valid
+
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

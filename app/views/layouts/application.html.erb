@@ -3,13 +3,29 @@
 <head>
   <title>Gamify School</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+  <!--<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>-->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <header class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+      <%= link_to "Gamify", "", class: "btn btn-lg btn-success", id: "logo" %>
+      <div class="nav_item"> <%= link_to "Blog", "articles", class: "btn btn-default btn-warning" %> </div>
+      <div class="nav_item"> <%= link_to "Link2", "", class: "btn btn-default btn-warning" %> </div>
+      <div class="nav_item"> <%= link_to "Link3", "", class: "btn btn-default btn-warning" %> </div>
+    </div>
+  </header>
 
-<%= yield %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <div class="container">
+    <%= yield %>
+    <div class="footer">
+      <p>&copy; Gamify School 2015</p>
+    </div>
+  </div>
+  
 </body>
+
 </html>
