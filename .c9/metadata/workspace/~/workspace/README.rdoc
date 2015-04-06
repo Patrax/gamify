@@ -1,1 +1,0 @@
-{"filter":false,"title":"README.rdoc","tooltip":"~/workspace/README.rdoc","ace":{},"undoManager":{"mark":0,"position":-1,"stack":[]},"timestamp":1428263491000,"hash":"23103218274335685465261014d1b35b45d8f857"}
