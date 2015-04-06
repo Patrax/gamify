@@ -1,0 +1,23 @@
+<%= render 'shared/page_title', title: @game.name %>
+
+<div class="row">
+  <div class="col-md-4 pull-right center">
+    <%= gravatar_for @game.user, size: 200%>
+    <p>
+      <h5>Brought to you by: <%= @game.user.username %></h5>
+    </p>
+  </div>
+  
+  <div class="col-md-8">
+    <%= link_to "Edit this Game", edit_game_path(@game), class: "btn btn-success pull-right" %>
+    <h3><%= @game.summary %></h3>
+    <div class="well">
+      <p>
+        <strong>Steps:</strong>
+      </p>
+      <%= simple_format(@game.description) %>
+    </div>
+  </div>
+</div>
+
+<h5><%= link_to "Return to Games Listing", games_path, class: "btn btn-warning btn-small" %></h5>

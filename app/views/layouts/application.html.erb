@@ -10,20 +10,14 @@
 </head>
 <body>
   
-  <header class="navbar navbar-fixed-top navbar-default">
-    <div class="container">
-      <%= link_to "Gamify", "", class: "btn btn-lg btn-success", id: "logo" %>
-      <div class="nav_item"> <%= link_to "Blog", "articles", class: "btn btn-default btn-warning" %> </div>
-      <div class="nav_item"> <%= link_to "Link2", "", class: "btn btn-default btn-warning" %> </div>
-      <div class="nav_item"> <%= link_to "Link3", "", class: "btn btn-default btn-warning" %> </div>
-    </div>
-  </header>
+<%= render 'layouts/navigation' %>
 
   <div class="container">
+    <%= render 'layouts/messages' %>
+    
     <%= yield %>
-    <div class="footer">
-      <p>&copy; Gamify School 2015</p>
-    </div>
+    
+    <%= render '/layouts/footer' %>
   </div>
   
 </body>

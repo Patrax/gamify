@@ -1,0 +1,27 @@
+<%= render 'shared/page_title', title: "All Games" %>
+
+<% @games.each do |game| %>
+  <div class="row">
+    
+    <div class="col-md-2">
+      <section class="user_info center">
+        <%= gravatar_for game.user, size: 100 %>
+        <h5><b>Author: <%= game.user.username %></b></h5>
+      </section>
+    </div>
+    
+    <div class="col-lg-8 well">
+      <h4><%= link_to game.name, game_path(game) %></h4>
+      <p><%= game.summary %></p>
+      <p>
+        <span class='quiet'>
+          <small>
+          <%= time_ago_in_words(game.created_at) %>
+          </small>
+        </span>
+      </p>
+    </div>
+    
+  </div>
+  <hr/>
+<% end %>
