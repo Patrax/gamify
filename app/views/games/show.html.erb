@@ -11,6 +11,9 @@
   <div class="col-md-8">
     <%= link_to "Edit this Game", edit_game_path(@game), class: "btn btn-success pull-right" %>
     <h3><%= @game.summary %></h3>
+    <div class="show_game">
+      <%= image_tag(@game.picture.url, class: "gravatar") if @game.picture? %>
+    </div>
     <div class="well">
       <p>
         <strong>Steps:</strong>

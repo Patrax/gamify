@@ -46,7 +46,7 @@ class GamesController < ApplicationController
   private
     
     def recipe_params
-      params.require(:game).permit(:name,:summary,:description)
+      params.require(:game).permit(:name,:summary,:description,:picture)
     end
   
 end
