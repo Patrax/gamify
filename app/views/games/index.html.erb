@@ -1,5 +1,7 @@
 <%= render 'shared/page_title', title: "All Games" %>
 
+<%= will_paginate %>
+
 <% @games.each do |game| %>
   <div class="row">
     
@@ -14,12 +16,18 @@
       <h4><%= link_to game.name, game_path(game) %></h4>
       <p><%= game.summary %></p>
       <p>
-        <span class='quiet'>
-          <small>
-          <%= time_ago_in_words(game.created_at) %>
-          </small>
-        </span>
+        <span class='quiet'><small>created: <%= time_ago_in_words(game.created_at) %>, </small></span>
+        <span class='quiet'><small>updated: <%= time_ago_in_words(game.updated_at) %></small></span>
       </p>
+      <div class="pull-right">
+        <%= link_to like_game_path(game, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= game.thumbs_up_total %>
+        <% end %>
+        &nbsp&nbsp&nbsp&nbsp
+        <%= link_to like_game_path(game, like: false), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= game.thumbs_down_total %>
+        <% end %>
+      </div>
     </div>
     
     <div class="col-md-4">
@@ -29,3 +37,5 @@
   </div>
   <hr/>
 <% end %>
+
+<%= will_paginate %>

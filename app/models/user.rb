@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :games
   has_many :articles
+  has_many :likes
   
   before_save {self.email = email.downcase}
   validates :username, presence: true, length: {minimum: 3, maximum: 40}
