@@ -1,3 +1,22 @@
+Authentication updates:
+1) Show game page -> Ability to edit/update only own game
+2) Navigation partial -> Toggle Menu, restrict new
+3) Restrict thumbs up and thumbs down action to logged_in users only
+4) Game - Update to current_user
+5) Like - update to current_user
+6) Before_action :require_user, except: [:show, :index]
+7) Before_action :require_same_user for users, only:[:edit, :update]
+
+Users TODO:
+- Add passwords to the users table so users can be authenticated and logged initialization
+- Use email as log in credentials, since email is unique
+- Ability to register new users to use the app
+- Ability to display users profile
+- Ability to list users using the app
+- Ability for users to log in and log out of the app
+- Restrict actions like create game, edit game and like feature to logged in users only
+- Restricting edit of games by users who created the game
+
 testing specs for games:
 name: string
 summary: text
