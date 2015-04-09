@@ -9,8 +9,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/spring
 
 # Ignore images uploaded
 public/assets/*
+public/uploads/*
 
 /.idea
