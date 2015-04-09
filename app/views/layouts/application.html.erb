@@ -4,22 +4,24 @@
   <title>Gamify School</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>-->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!--<scrip type="text/javascript" src="http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js"></scrip>-->
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
 <%= render 'layouts/navigation' %>
 
-  <div class="container">
-    <%= render 'layouts/messages' %>
-    
-    <%= yield %>
-    
-    <%= render '/layouts/footer' %>
-  </div>
-  
+<div class="container">
+  <%= render 'layouts/messages' %>
+
+  <%= yield %>
+
+  <%= render '/layouts/footer' %>
+</div>
+
 </body>
 
 </html>
