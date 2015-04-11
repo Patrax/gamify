@@ -17,7 +17,9 @@
       <%= image_tag(@game.picture.url, class: "gravatar") if @game.picture? %>
     </div>
     <div class="well">
-      <p>Tags: <%= render @game.tags %></p>
+      <% if @game.tags.any? %>
+        <p>Tags: <%= render @game.tags %></p>
+      <% end %>
       <p><strong>Steps:</strong></p>
       <%= simple_format(@game.description) %>
       <div class="pull-right">

@@ -20,7 +20,9 @@
     <div class="col-lg-6 well">
       <h4><%= link_to game.name, game_path(game) %></h4>
       <p><%= game.summary %></p>
-      <p>Tags: <%= render game.tags %></p>
+      <% if game.tags.any? %>
+        <p>Tags: <%= render game.tags %></p>
+      <% end %>
       <p>
         <span class='quiet'><small>created: <%= time_ago_in_words(game.created_at) %>, </small></span>
         <span class='quiet'><small>updated: <%= time_ago_in_words(game.updated_at) %></small></span>
