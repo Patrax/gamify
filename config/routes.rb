@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/home', to: 'pages#home'
   get '/challenges/try', to: 'pages#try_challenge'
 
-  resources :users, except: [:new]
+  resources :users, except: [:new, :destroy]
   get '/register', to: 'users#new'
   
   resources :games do

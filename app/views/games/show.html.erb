@@ -9,8 +9,11 @@
   </div>
   
   <div class="col-md-8">
-    <% if logged_in? and @game.user == current_user %>
+    <% if logged_in? and (@game.user == current_user || current_user.admin?) %>
       <%= link_to "Edit this Game", edit_game_path(@game), class: "btn btn-success pull-right" %>
+    <% end %>
+    <% if current_user.admin? %>
+      <%= link_to "[Delete Game]", @game, method: :delete, data: {confirm: "Are you sure?" } %>
     <% end %>
     <h3><%= @game.summary %></h3>
     <div class="show_game">

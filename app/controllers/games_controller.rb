@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:edit, :update, :show, :like]
   before_action :require_user, except: [:show, :index]
   before_action :require_same_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
   
   def index
     @games = Game.paginate(page: params[:page], per_page: 4)
@@ -41,9 +42,11 @@ class GamesController < ApplicationController
     end
   end
   
-  # def destroy
-  #   @game = Game.find(params[:id])
-  # end
+  def destroy
+    @game = Game.find(params[:id]).destroy
+    flash[:success] = "Game Deleted"
+    redirect_to games_path
+  end
   
   def like
     like = Like.create(like: params[:like], user: current_user, game: @game)
@@ -64,7 +67,7 @@ class GamesController < ApplicationController
     end
     
     def require_same_user
-      if current_user != @game.user
+      if current_user != @game.user and !current_user.admin?
         flash[:danger] = "You can only edit your own games"
         redirect_to games_path
       end
@@ -72,6 +75,10 @@ class GamesController < ApplicationController
     
     def set_game
       @game = Game.find(params[:id])
+    end
+    
+    def admin_user
+      redirect_to games_path unless current_user.admin?  
     end
   
 end

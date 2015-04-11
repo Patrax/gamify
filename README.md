@@ -1,11 +1,14 @@
+Add Admin Functionality:
+- 
+
 Authentication updates:
-1) Show game page -> Ability to edit/update only own game
-2) Navigation partial -> Toggle Menu, restrict new
-3) Restrict thumbs up and thumbs down action to logged_in users only
-4) Game - Update to current_user
-5) Like - update to current_user
-6) Before_action :require_user, except: [:show, :index]
-7) Before_action :require_same_user for users, only:[:edit, :update]
+- Show game page -> Ability to edit/update only own game
+- Navigation partial -> Toggle Menu, restrict new
+- Restrict thumbs up and thumbs down action to logged_in users only
+- Game - Update to current_user
+- Like - update to current_user
+- Before_action :require_user, except: [:show, :index]
+- Before_action :require_same_user for users, only:[:edit, :update]
 
 Users TODO:
 - Add passwords to the users table so users can be authenticated and logged initialization

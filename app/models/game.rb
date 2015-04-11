@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :user
-  has_many :likes
-  has_many :game_tags
+  has_many :likes, dependent: :destroy
+  has_many :game_tags, dependent: :destroy
   has_many :tags, through: :game_tags
   
   validates :user_id, presence: true
