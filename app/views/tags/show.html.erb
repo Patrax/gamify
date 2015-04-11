@@ -1,13 +1,13 @@
-<%= render 'shared/page_title', title: "All Games" %>
+<%= render 'shared/page_title', title: "Games for : " + @tag.name + " tag" %>
 
 <ul class="nav nav-tabs">
   <li class='active'><%= link_to "Games", games_path %></li>
   <li><%= link_to "Users", users_path %></li>
 </ul>
 
-<%= will_paginate %>
+<%= will_paginate @games %>
 
-<% @games.each do |game| %>
+<% @tag.games.each do |game| %>
   <div class="row">
     
     <div class="col-md-2">
@@ -43,4 +43,4 @@
   <hr/>
 <% end %>
 
-<%= will_paginate %>
+<%= will_paginate @games %>

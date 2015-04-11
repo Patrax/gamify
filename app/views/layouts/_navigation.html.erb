@@ -3,6 +3,26 @@
       <%= link_to "Gamify", root_path, class: "btn btn-lg btn-success", id: "logo" %>
       <div class="nav_item"> <%= link_to "Blog", articles_path, class: "btn btn-default btn-warning" %> </div>
       <div class="nav_item"> <%= link_to "Games", games_path, class: "btn btn-default btn-warning" %> </div>
+      <ul class="nav_ul_item">
+        <li class="dropdown">
+            <%= link_to '#', class: "btn btn-default btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+              Tags <b class="caret"></b>
+            <% end %>
+            <ul class="dropdown-menu">
+              <% Tag.all.each do |tag| %>
+                <li><%= link_to tag.name, tag_path(tag) %></li>
+              <% end %>
+              <% if logged_in? %>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to(new_tag_path) do %>
+                  New Tag
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+      </ul>
        <div class="nav_item"> <%= link_to "Try a challenge", challenges_try_path, class: "btn btn-success" %> </div>
       <% if logged_in? %>  
         <div class="nav_item"> <%= link_to "New Game", new_game_path, class: "btn btn-default btn-warning" %> </div>

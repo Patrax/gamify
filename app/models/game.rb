@@ -1,6 +1,8 @@
 class Game < ActiveRecord::Base
   belongs_to :user
   has_many :likes
+  has_many :game_tags
+  has_many :tags, through: :game_tags
   
   validates :user_id, presence: true
   validates :name, presence: true, length: {minimum: 5, maximum: 100}

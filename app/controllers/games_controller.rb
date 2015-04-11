@@ -60,7 +60,7 @@ class GamesController < ApplicationController
   private
     
     def game_params
-      params.require(:game).permit(:name,:summary,:description,:picture)
+      params.require(:game).permit(:name,:summary,:description,:picture,tag_ids: [])
     end
     
     def require_same_user
