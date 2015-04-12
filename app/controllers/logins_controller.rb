@@ -10,7 +10,7 @@ class LoginsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "You are logged in"
-      redirect_to games_path
+      redirect_to root_path
     else
       flash.now[:danger] = "Your email address or password does not match"
       render 'new'
