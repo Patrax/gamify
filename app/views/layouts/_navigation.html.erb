@@ -40,7 +40,10 @@
           </li>
         </ul>
       <% else %>
-        <div class="nav_item"> <%= link_to "Log in", login_path, class: "btn btn-default btn-success" %> </div>
+        <div class="nav_item">
+            <%= link_to "Log in", login_path, class: "btn btn-success" %>
+              <%= link_to "Sign up now!", register_path, class: "btn btn-success" %>
+        </div>
       <% end %>
     </div>
   </header>

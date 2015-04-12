@@ -1,25 +1,44 @@
 <div class="center jumbotron">
   <h1>Welcome to Gamify</h1>
+
   <h2>Bringing Education through Games</h2>
-  <%= link_to "Sign up now!", register_path, class: "btn btn-lg btn-success" %>
 </div>
 
+
 <div class="row">
-  <div class="col-lg-4">
-    <h3 class="midrow">View Games as Guest</h3>
-    <h2 class="left">Browse and play games as a guest and sign up later</h2>
-    <p><%= link_to "Browse Games", games_path, class: "btn btn-warning btn-small" %></p>
+  <div class="page-header">
+    <h2>Popular courses</h2>
   </div>
-  
-  <div class="col-lg-4">
-    <h3 class="midrow">Sign in to your account</h3>
-    <h2 class="left">Add/update your games/create reviews/like-dislike games and much more</h2>
-    <p><%= link_to "Log in to your account", login_path, class: "btn btn-warning btn-small" %></p>
+
+  <div class="col-xs-18 col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <img src="http://placehold.it/500x300" alt="">
+
+      <div class="caption center">
+        <h4><%= link_to "Physics", courses_physics_path %></h4>
+
+        <p>Projectile motion, mechanics and electricity and magnetism. Solid understanding of algebra and a basic
+          understanding of trigonometry necessary.</p>
+      </div>
+
+    </div>
   </div>
-  
-  <div class="col-lg-4">
-    <h3 class="midrow">View Games as Guest</h3>
-    <h2 class="left">Browse and play games as a guest and sign up later</h2>
-    <p><%= link_to "Browse Games", "", class: "btn btn-warning btn-small" %></p>
+
+  <div class="col-xs-18 col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <img src="http://placehold.it/500x300" alt="">
+
+      <div class="caption center">
+        <h4><a href="#">Mathematics</a></h4>
+
+        <p>Math begins with counting. It's the most important skill we learn in our early years and becomes
+          the foundation for all other math concepts. Once we can count, we can add, subtract, and measure
+          the world around us.</p>
+      </div>
+
+    </div>
   </div>
-</div>
+
+
+
+</div><!-- End row -->
