@@ -11,4 +11,8 @@ class PagesController < ApplicationController
 	def course_physics
 
 	end
+
+	def courses
+
+	end
 end
