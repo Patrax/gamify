@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/challenges/try', to: 'pages#try_challenge'
   get '/courses/physics', to: 'pages#course_physics'
   get '/courses', to: 'pages#courses'
-  get '/courses/viewer', to: 'pages#viewer'
+  get '/courses/viewer/', to: 'pages#viewer'
 
   resources :users, except: [:new, :destroy]
   get '/register', to: 'users#new'
