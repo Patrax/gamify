@@ -11,9 +11,29 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
-//= require_tree .
+//= require angular
+//= require angular-route
+//= require angular-resource
+//= require angular-rails-templates
+//= require_tree ./templates
 
+//= require scripts/viewer/viewer
+//= require_self
+
+
+angular.module('app', [
+    'ngRoute',
+    'viewer']);
+
+angular.module('app').config(['$routeProvider', '$locationProvider', '$httpProvider',
+    function ($routeProvider, $locationProvider, $httpProvider) {
+    $routeProvider.otherwise({redirectTo:'/otherwise'});
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+}]);

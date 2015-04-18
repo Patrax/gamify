@@ -15,4 +15,8 @@ class PagesController < ApplicationController
 	def courses
 
 	end
+
+	def viewer
+
+	end
 end

@@ -11,8 +11,11 @@
 /tmp
 /spring
 
-# Ignore images uploaded
+# Images uploaded
 public/assets/*
 public/uploads/*
+
+# Bower components
+bower_components/
 
 /.idea
