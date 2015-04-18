@@ -3,12 +3,11 @@ angular.module 'viewer', ['ngRoute', 'templates']
 
 .config ['$routeProvider', ($routeProvider) ->
     $routeProvider
-    .when '/courses/viewer',
+    .when '/',
       templateUrl: 'index.html'
       controller : 'ViewerViewCtrl'
     .otherwise
         redirectTo: '/'
-    console.log 'hey2'
 ]
 
 .controller 'ViewerViewCtrl', ['$scope'

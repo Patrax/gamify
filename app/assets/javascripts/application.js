@@ -30,10 +30,9 @@ angular.module('app', [
 
 angular.module('app').config(['$routeProvider', '$locationProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $httpProvider) {
-    $routeProvider.otherwise({redirectTo:'/otherwise'});
+    $routeProvider.otherwise({redirectTo:'/404'});
     $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
+        enabled: true
     });
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 }]);
