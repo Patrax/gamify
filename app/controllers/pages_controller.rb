@@ -1,5 +1,11 @@
 class PagesController < ApplicationController
 
+	layout "exhibition", only: [:cover]
+
+	def cover
+
+	end
+
 	def home
 
 	end

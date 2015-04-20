@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'pages#home'
+  root 'pages#cover'
 
   get '/home', to: 'pages#home'
   get '/challenges/try', to: 'pages#try_challenge'
