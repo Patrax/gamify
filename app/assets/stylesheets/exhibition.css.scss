@@ -1,4 +1,5 @@
 /*
+ *= require font-awesome
  *= require_self
  */
 
@@ -63,8 +64,89 @@
 
 /* end Front card */
 
-.front-form{
 
+/*
+ * Subscription form: Specific form to suscription new visitors
+*/
+
+.front-form{
+	padding-top: 1.5em;
+	.form-control {
+		background-color: #fff;
+		border: 1px solid #fff;
+		box-shadow: none;
+		height: 45px;
+		font-weight: 300;
+
+		&:focus {
+			border-color: #fff;
+			outline: 0;
+			box-shadow: none;
+		}
+
+		&::-webkit-input-placeholder {
+			color: #727272;
+			font-weight: 300;
+		}
+		&:-moz-placeholder {
+			color: #727272;
+			font-weight: 300;
+		}
+		&::-moz-placeholder {
+			color: #727272;
+			font-weight: 300;
+		}
+		&:-ms-input-placeholder {
+			color: #727272;
+			font-weight: 300;
+		}
+	}
 }
 
+.center-block { float: none; }
 
+.input-group-btn>.btn:hover,
+.input-group-btn>.btn:focus,
+.input-group-btn>.btn:active { z-index: 1; }
+
+.btn-default {
+	color: #fff;
+	background-color: #3c83f9;
+	border-color: #3c83f9;
+	-webkit-transition: all .5s ease-out;
+	transition: all .5s ease-out;
+	padding: 12px 1.5em;
+
+	&:hover, &:focus, &:active {
+		color: #fff;
+		background-color: #2d62bb;
+		border-color: #2d62bb;
+	}
+}
+
+.btn:active:focus, .btn-default:focus,
+.btn:focus, .btn-default:active {
+	outline: none;
+}
+
+#form-message {
+	margin: .75em 0 0;
+	color: #FFF;
+}
+
+.alert,
+.success {
+	padding: .5em 1em;
+	border-radius: 4px;
+	display: inline-block;
+	i {
+		padding-right: .5em;
+	}
+}
+
+.alert { background-color: rgba(231, 76, 60, 0.7); }
+.success { background-color: rgba(39, 174, 96, 0.7); }
+
+.fa-paper-plane { padding-left: .5em; }
+
+/* end Subscription form */
