@@ -5,16 +5,66 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background: none;
+
+/*
+ * Container wheel: A full-screen carousel
+*/
+
+.container-wheel .item {
+	margin-bottom: 50px;
+	position: fixed;
+	width: 100%; height: 100%;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-ms-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
 }
 
-.full {
-    background: url(http://placehold.it/1920x1080) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.container-wheel {
+	.one {
+		background: image_url('bg/full_one.jpg');
+		background-size: cover;
+		-moz-background-size: cover;
+	}
+	.two {
+		background: image_url('bg/full_second.jpg');
+		background-size: cover;
+		-moz-background-size: cover;
+	}
+	.active.left {
+		left: 0;
+		opacity: 0;
+		z-index: 2;
+	}
 }
+
+/* end Container wheel */
+
+/*
+ * Front card: A block that works as welcome for news visitors
+*/
+
+.front-card{
+	margin-top: 100px;
+	.text{
+		color: rgb(226, 226, 226);
+		font-style: italic;
+		font-weight: 400;
+		h1{
+			font-size: 40px;
+		}
+		p{
+			margin-top: 15px;
+			font-size: 19px;
+		}
+	}
+}
+
+/* end Front card */
+
+.front-form{
+
+}
+
+
