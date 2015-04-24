@@ -35,3 +35,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0.0.beta2'
   gem 'spring'
 end
+
+gem 'rails_12factor', group: :production
