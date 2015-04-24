@@ -22,7 +22,7 @@ gem 'responders'
 gem 'rails-html-sanitizer', '~> 1.0'
 
 # Web fonts and stylesheet
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 gem 'unicorn'

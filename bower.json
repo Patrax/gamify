@@ -1,4 +1,5 @@
 {
+	"name": "Gamify School assets",
     "vendor": {
         "name": "bower-rails generated vendor assets",
         "dependencies": {
