@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'pages#cover'
+  root 'pages#home'
 
-  get '/home', to: 'pages#home'
   get '/challenges/try', to: 'pages#try_challenge'
+
   get '/courses/physics', to: 'pages#course_physics'
   get '/courses', to: 'pages#courses'
   get '/courses/viewer/', to: 'pages#viewer'
