@@ -3,7 +3,7 @@
 //= require bootstrap
 //= require turbolinks
 
-$(document).ready(function() {
+$(document).on('ready page:load', function() {
 	$('.container-wheel').carousel({interval: 7000});
 
 
